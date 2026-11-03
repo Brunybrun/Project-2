@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
     public Animator Anim;
     static public bool hit;
     public Rigidbody2D RB;
-    public int Speed = 3;
+    private int Speed = 4;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +17,14 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMovement();
+        if (State == PlayerState.Alive)
+        {
+            PlayerMovement();
+        }
+        else if (State == PlayerState.Dead)
+        {
+            DeadPlayerMovement();
+        }
     }
 
     public enum PlayerState{
@@ -32,7 +39,6 @@ public class PlayerScript : MonoBehaviour
         Vector2 vel = Vector2.zero;
         if (Keyboard.current.wKey.isPressed)
         {
-            s = PlayerState.Alive;
             vel.y += Speed;
         }
         if (Keyboard.current.sKey.isPressed)
@@ -47,6 +53,30 @@ public class PlayerScript : MonoBehaviour
         if (Keyboard.current.aKey.isPressed)
         {
             vel.x -= Speed;
+        }
+        SetState(s);
+        RB.linearVelocity = vel;
+    }
+
+    public void DeadPlayerMovement()
+    {
+        PlayerState s = PlayerState.Dead;
+        Vector2 vel = Vector2.zero;
+        if (Keyboard.current.wKey.isPressed)
+        {
+            vel.y += Speed / 2;
+        }
+        if (Keyboard.current.sKey.isPressed)
+        {
+            vel.y -= Speed / 2;
+        }
+        if (Keyboard.current.dKey.isPressed)
+        {
+            vel.x += Speed / 2;
+        }
+        if (Keyboard.current.aKey.isPressed)
+        {
+            vel.x -= Speed / 2;
         }
         SetState(s);
         RB.linearVelocity = vel;
