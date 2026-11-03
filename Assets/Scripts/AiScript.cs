@@ -3,7 +3,7 @@ using UnityEngine;
 public class AiScript : MonoBehaviour
 {
     public Rigidbody2D RB;
-    private int speed = 1;
+    private int speed = 4;
     private bool up = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

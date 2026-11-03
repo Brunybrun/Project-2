@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        hit = false;
     }
 
     // Update is called once per frame
@@ -43,7 +43,6 @@ public class PlayerScript : MonoBehaviour
         }
         if (Keyboard.current.sKey.isPressed)
         {
-            s = PlayerState.Dead;
             vel.y -= Speed;
         }
         if (Keyboard.current.dKey.isPressed)
@@ -53,6 +52,10 @@ public class PlayerScript : MonoBehaviour
         if (Keyboard.current.aKey.isPressed)
         {
             vel.x -= Speed;
+        }
+        if (hit == true)
+        {
+            s = PlayerState.Dead;
         }
         SetState(s);
         RB.linearVelocity = vel;
