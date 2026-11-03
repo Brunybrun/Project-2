@@ -1,20 +1,28 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerScript : MonoBehaviour
 {
+    public static PlayerScript Player;
+
     public PlayerState State = PlayerState.Alive;
     public Animator Anim;
-    static public bool hit;
+    public static bool hit;
     public Rigidbody2D RB;
     private int Speed = 4;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject ghost;
+
+    private void Awake()
+    {
+        Player = this;
+    }
     void Start()
     {
         hit = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (State == PlayerState.Alive)
@@ -93,6 +101,20 @@ public class PlayerScript : MonoBehaviour
         }
         else if (State == PlayerState.Dead){
             Anim.Play("Dead");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hazard")
+        {
+            hit = true;
+            Vector3 ghostSpawn = new Vector3(-9f, 0f, 0f);
+            Instantiate(ghost, ghostSpawn, Quaternion.identity);
+        }
+        if (collision.gameObject.tag == "Flag")
+        {
+            SceneManager.LoadScene("Level 2");
         }
     }
 }

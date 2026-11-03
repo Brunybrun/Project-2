@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Trigger
+  - Hazard
+  - Flag
   layers:
   - Default
   - TransparentFX

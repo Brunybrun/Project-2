@@ -6,7 +6,6 @@ public class TriggerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Hit");
             PlayerScript.hit = true;
         }
     }

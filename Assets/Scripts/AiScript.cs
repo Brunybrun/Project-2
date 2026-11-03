@@ -2,35 +2,20 @@ using UnityEngine;
 
 public class AiScript : MonoBehaviour
 {
+    public PlayerScript Target;
+    public float Speed = 3;
     public Rigidbody2D RB;
-    private int speed = 4;
-    private bool up = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        if (Target == null) Target =  PlayerScript.Player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 vel = Vector2.zero;
-        if (up)
-        {
-            vel.y += speed;
-            if (transform.position.y > 4)
-            {
-                up = false;
-            }
-        }
-        else if (up == false)
-        {
-            vel.y -= speed;
-            if (transform.position.y < -4)
-            {
-                up = true;
-            }
-        }
-        RB.linearVelocity = vel;
+        if (Target == null) return;
+        Vector3 offset = Target.transform.position - transform.position;
+        RB.linearVelocity = offset.normalized * Speed;
     }
 }
