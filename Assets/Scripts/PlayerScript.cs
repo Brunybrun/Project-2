@@ -9,7 +9,8 @@ public class PlayerScript : MonoBehaviour
 
     public PlayerState State = PlayerState.Alive;
     public Animator Anim;
-    public static bool hit;
+    private bool hit;
+    private bool spawnG = true;
     public Rigidbody2D RB;
     private int Speed = 4;
     public GameObject ghost;
@@ -71,6 +72,9 @@ public class PlayerScript : MonoBehaviour
 
     public void DeadPlayerMovement()
     {
+        Vector2 vel = Vector2.zero;
+        RB.linearVelocity = Vector2.zero;
+        /*
         PlayerState s = PlayerState.Dead;
         Vector2 vel = Vector2.zero;
         if (Keyboard.current.wKey.isPressed)
@@ -90,7 +94,7 @@ public class PlayerScript : MonoBehaviour
             vel.x -= Speed / 2;
         }
         SetState(s);
-        RB.linearVelocity = vel;
+        RB.linearVelocity = vel; */
     }
 
     public void SetState(PlayerState s){
@@ -108,10 +112,14 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Hazard")
         {
-            Debug.Log("Hit");
             hit = true;
-            Vector3 ghostSpawn = new Vector3(-9f, 0f, 0f);
-            Instantiate(ghost, ghostSpawn, Quaternion.identity);
+            Debug.Log("Hit");
+            if (spawnG)
+            {
+                spawnG = false;
+                Vector3 ghostSpawn = new Vector3(-9f, 0f, 0f);
+                Instantiate(ghost, ghostSpawn, Quaternion.identity);
+            }
         }
         if (collision.gameObject.tag == "Flag")
         {

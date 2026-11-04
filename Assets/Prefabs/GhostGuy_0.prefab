@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1727260568465037399}
   - component: {fileID: 4945039335395778181}
   - component: {fileID: 1010989247783999402}
-  - component: {fileID: 1115082166800517966}
+  - component: {fileID: 7458575873241871980}
+  - component: {fileID: 8989136170027555486}
   m_Layer: 0
   m_Name: GhostGuy_0
   m_TagString: Untagged
@@ -119,8 +120,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &1115082166800517966
+  m_Constraints: 4
+--- !u!114 &7458575873241871980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,10 +130,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 7527962604721331772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f4bdd3fd4bba664ba0efce09297dd2e, type: 3}
+  m_Script: {fileID: 11500000, guid: b93aa58826e17a2488803325f9508462, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
-  State: 1
-  Anim: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::GhostPlayerScript
   RB: {fileID: 1010989247783999402}
-  ghost: {fileID: 0}
+--- !u!58 &8989136170027555486
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7527962604721331772}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
