@@ -1,6 +1,8 @@
 using UnityEngine;
 using static PlayerScript;
 using UnityEngine.InputSystem;
+using System;
+using UnityEngine.SceneManagement;
 
 public class GhostPlayerScript : MonoBehaviour
 {
@@ -39,5 +41,15 @@ public class GhostPlayerScript : MonoBehaviour
         }
         //SetState(s);
         RB.linearVelocity = vel;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Hit");
+            PlayerScript.hit = false;
+            Destroy(gameObject);
+        }
     }
 }

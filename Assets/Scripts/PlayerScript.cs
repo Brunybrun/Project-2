@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
 
     public PlayerState State = PlayerState.Alive;
     public Animator Anim;
-    private bool hit;
+    public static bool hit;
     private bool spawnG = true;
     public Rigidbody2D RB;
     private int Speed = 4;
@@ -72,8 +72,14 @@ public class PlayerScript : MonoBehaviour
 
     public void DeadPlayerMovement()
     {
-        Vector2 vel = Vector2.zero;
+        PlayerState s = PlayerState.Dead;
+        if (hit == false)
+        {
+            s = PlayerState.Alive;
+            spawnG = true;
+        }
         RB.linearVelocity = Vector2.zero;
+        SetState(s);
         /*
         PlayerState s = PlayerState.Dead;
         Vector2 vel = Vector2.zero;
@@ -113,7 +119,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.tag == "Hazard")
         {
             hit = true;
-            Debug.Log("Hit");
+            Debug.Log("Hit Player");
             if (spawnG)
             {
                 spawnG = false;
