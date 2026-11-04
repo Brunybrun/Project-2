@@ -108,6 +108,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Hazard")
         {
+            Debug.Log("Hit");
             hit = true;
             Vector3 ghostSpawn = new Vector3(-9f, 0f, 0f);
             Instantiate(ghost, ghostSpawn, Quaternion.identity);
