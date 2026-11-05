@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GhostPlayerScript : MonoBehaviour
 {
     public Rigidbody2D RB;
+    public SpriteRenderer SR;
     private int Speed = 4;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,10 +35,12 @@ public class GhostPlayerScript : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
         {
             vel.x += Speed / 2;
+            SR.flipX = false;
         }
         if (Keyboard.current.aKey.isPressed)
         {
             vel.x -= Speed / 2;
+            SR.flipX = true;
         }
         //SetState(s);
         RB.linearVelocity = vel;

@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
+    [SerializeField] bool vertical;
     public Rigidbody2D RB;
-    public GameObject Spike;
-    private int spikeAmount = 5;
-    private int speed = 4;
+    private int Speed = 4;
     private bool up = true;
-    private float num = 0;
-    private float negativeNum = -1f;
+    private bool right = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,16 +16,22 @@ public class ObstacleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while (num < spikeAmount)
+        if (vertical)
         {
-            Vector3 spikeSpawn = new Vector3((-7f + (num * 2f)), (4f * negativeNum), 0f);
-            Instantiate(Spike, spikeSpawn, Quaternion.identity);
-            num++;
+            MoveVertically();
         }
+        else
+        {
+            MoveHorizontally();
+        }
+    }
+
+    private void MoveVertically()
+    {
         Vector2 vel = Vector2.zero;
         if (up)
         {
-            vel.y += speed;
+            vel.y += Speed;
             if (transform.position.y > 4)
             {
                 up = false;
@@ -35,10 +39,32 @@ public class ObstacleScript : MonoBehaviour
         }
         else if (up == false)
         {
-            vel.y -= speed;
+            vel.y -= Speed;
             if (transform.position.y < -4)
             {
                 up = true;
+            }
+        }
+        RB.linearVelocity = vel;
+    }
+
+    private void MoveHorizontally()
+    {
+        Vector2 vel = Vector2.zero;
+        if (right)
+        {
+            vel.x += Speed + 2;
+            if (transform.position.x > 10)
+            {
+                right = false;
+            }
+        }
+        else if (right == false)
+        {
+            vel.x -= Speed + 2;
+            if (transform.position.x < 7)
+            {
+                right = true;
             }
         }
         RB.linearVelocity = vel;

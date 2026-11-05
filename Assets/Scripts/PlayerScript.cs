@@ -9,11 +9,12 @@ public class PlayerScript : MonoBehaviour
 
     public PlayerState State = PlayerState.Alive;
     public Animator Anim;
+    public Rigidbody2D RB;
+    public SpriteRenderer SR;
+    public GameObject ghost;
+    private int Speed = 4;
     public static bool hit;
     private bool spawnG = true;
-    public Rigidbody2D RB;
-    private int Speed = 4;
-    public GameObject ghost;
 
     private void Awake()
     {
@@ -57,10 +58,12 @@ public class PlayerScript : MonoBehaviour
         if (Keyboard.current.dKey.isPressed)
         {
             vel.x += Speed;
+            SR.flipX = false;
         }
         if (Keyboard.current.aKey.isPressed)
         {
             vel.x -= Speed;
+            SR.flipX = true;
         }
         if (hit == true)
         {
@@ -80,27 +83,6 @@ public class PlayerScript : MonoBehaviour
         }
         RB.linearVelocity = Vector2.zero;
         SetState(s);
-        /*
-        PlayerState s = PlayerState.Dead;
-        Vector2 vel = Vector2.zero;
-        if (Keyboard.current.wKey.isPressed)
-        {
-            vel.y += Speed / 2;
-        }
-        if (Keyboard.current.sKey.isPressed)
-        {
-            vel.y -= Speed / 2;
-        }
-        if (Keyboard.current.dKey.isPressed)
-        {
-            vel.x += Speed / 2;
-        }
-        if (Keyboard.current.aKey.isPressed)
-        {
-            vel.x -= Speed / 2;
-        }
-        SetState(s);
-        RB.linearVelocity = vel; */
     }
 
     public void SetState(PlayerState s){
