@@ -9,8 +9,9 @@ public class PlayerScript : MonoBehaviour
 
     public PlayerState State = PlayerState.Alive;
     public Animator Anim;
-    public Rigidbody2D RB;
+    public static Rigidbody2D PRB;
     public SpriteRenderer SR;
+    public GameObject playerChar;
     public GameObject ghost;
     private int Speed = 4;
     public static bool hit;
@@ -19,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         Player = this;
+        PRB = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
@@ -70,7 +72,7 @@ public class PlayerScript : MonoBehaviour
             s = PlayerState.Dead;
         }
         SetState(s);
-        RB.linearVelocity = vel;
+        PRB.linearVelocity = vel;
     }
 
     public void DeadPlayerMovement()
@@ -81,7 +83,8 @@ public class PlayerScript : MonoBehaviour
             s = PlayerState.Alive;
             spawnG = true;
         }
-        RB.linearVelocity = Vector2.zero;
+        PRB.linearVelocity = Vector2.zero;
+        //RB.transform.position = CheckpointScript.checkpointPosition;
         SetState(s);
     }
 
@@ -105,9 +108,12 @@ public class PlayerScript : MonoBehaviour
             if (spawnG)
             {
                 spawnG = false;
-                Vector3 ghostSpawn = new Vector3(-9f, 0f, 0f);
+                Vector3 ghostSpawn = GhostSpawn.spawnPosition;
                 Instantiate(ghost, ghostSpawn, Quaternion.identity);
             }
+            /*Destroy(gameObject);
+            Vector3 playerCharSpawn = CheckpointScript.checkpointPosition;
+            Instantiate(playerChar, playerCharSpawn, Quaternion.identity);*/
         }
         if (collision.gameObject.tag == "Flag")
         {

@@ -50,8 +50,9 @@ public class GhostPlayerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Hit");
+            Debug.Log("I'm Alive!");
             PlayerScript.hit = false;
+            PlayerScript.PRB.transform.position = CheckpointScript.checkpointPosition;
             Destroy(gameObject);
         }
     }
