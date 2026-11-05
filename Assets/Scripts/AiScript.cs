@@ -8,7 +8,7 @@ public class AiScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (Target == null) Target =  PlayerScript.Player;
+        if (Target == null) Target = PlayerScript.Player;
     }
 
     // Update is called once per frame
