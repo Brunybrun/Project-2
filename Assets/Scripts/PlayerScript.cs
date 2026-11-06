@@ -11,7 +11,6 @@ public class PlayerScript : MonoBehaviour
     public Animator Anim;
     public static Rigidbody2D PRB;
     public SpriteRenderer SR;
-    public GameObject playerChar;
     public GameObject ghost;
     private int Speed = 4;
     public static bool hit;
@@ -84,7 +83,6 @@ public class PlayerScript : MonoBehaviour
             spawnG = true;
         }
         PRB.linearVelocity = Vector2.zero;
-        //RB.transform.position = CheckpointScript.checkpointPosition;
         SetState(s);
     }
 
@@ -111,9 +109,6 @@ public class PlayerScript : MonoBehaviour
                 Vector3 ghostSpawn = GhostSpawn.spawnPosition;
                 Instantiate(ghost, ghostSpawn, Quaternion.identity);
             }
-            /*Destroy(gameObject);
-            Vector3 playerCharSpawn = CheckpointScript.checkpointPosition;
-            Instantiate(playerChar, playerCharSpawn, Quaternion.identity);*/
         }
         if (collision.gameObject.tag == "Flag")
         {

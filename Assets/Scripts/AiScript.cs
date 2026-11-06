@@ -3,8 +3,8 @@ using UnityEngine;
 public class AiScript : MonoBehaviour
 {
     public PlayerScript Target;
-    public float Speed = 3;
     public Rigidbody2D RB;
+    public float Speed = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
