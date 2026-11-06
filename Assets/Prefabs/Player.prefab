@@ -110,8 +110,8 @@ MonoBehaviour:
   State: 1
   Anim: {fileID: 1071650687025118430}
   SR: {fileID: 2685984476525666591}
-  playerChar: {fileID: 1957539540792810330}
   ghost: {fileID: 2131769142996847092, guid: 1a3e38088578ec24393923817c054268, type: 3}
+  playerChar: {fileID: 1957539540792810330}
 --- !u!50 &565284266836008118
 Rigidbody2D:
   serializedVersion: 5

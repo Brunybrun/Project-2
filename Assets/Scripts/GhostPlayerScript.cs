@@ -3,6 +3,7 @@ using static PlayerScript;
 using UnityEngine.InputSystem;
 using System;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class GhostPlayerScript : MonoBehaviour
 {
@@ -52,7 +53,14 @@ public class GhostPlayerScript : MonoBehaviour
         {
             Debug.Log("I'm Alive!");
             PlayerScript.hit = false;
-            PlayerScript.PRB.transform.position = CheckpointScript.checkpointPosition;
+            if (GameManager.startAtSpawn)
+            {
+                PlayerScript.PRB.transform.position = PlayerSpawn.spawnPointPosition;
+            }
+            else if (GameManager.startAtSpawn == false)
+            {
+                PlayerScript.PRB.transform.position = CheckpointScript.checkpointPosition;
+            }
             Destroy(gameObject);
         }
     }
