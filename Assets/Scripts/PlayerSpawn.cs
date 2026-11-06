@@ -4,14 +4,15 @@ public class PlayerSpawn : MonoBehaviour
 {
     public GameObject spawnPoint;
     public static Vector3 spawnPointPosition;
-    public SpriteRenderer SR;
     public GameObject playerChar;
+    private SpriteRenderer SR;
 
     void Awake()
     {
+        SR = GetComponent<SpriteRenderer>();
+        SR.enabled = false;
         spawnPointPosition = transform.position;
         Vector3 playerSpawn = spawnPointPosition;
         Instantiate(playerChar, playerSpawn, Quaternion.identity);
-        SR.enabled = false;
     }
 }

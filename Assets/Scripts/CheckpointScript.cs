@@ -4,11 +4,19 @@ public class CheckpointScript : MonoBehaviour
 {
     public GameObject checkpoint;
     public static Vector3 checkpointPosition;
-    public SpriteRenderer SR;
+    private SpriteRenderer SR;
 
     void Awake()
     {
-        checkpointPosition = transform.position;
+        SR = GetComponent<SpriteRenderer>();
         SR.enabled = false;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            checkpointPosition = transform.position;
+        }
     }
 }

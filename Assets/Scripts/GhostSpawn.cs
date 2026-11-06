@@ -4,11 +4,12 @@ public class GhostSpawn : MonoBehaviour
 {
     public GameObject spawn;
     public static Vector3 spawnPosition;
-    public SpriteRenderer SR;
+    private SpriteRenderer SR;
 
     void Awake()
     {
-        spawnPosition = transform.position;
+        SR = GetComponent<SpriteRenderer>();
         SR.enabled = false;
+        spawnPosition = transform.position;
     }
 }

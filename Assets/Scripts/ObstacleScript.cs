@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
-    [SerializeField] bool vertical;
     public Rigidbody2D RB;
-    private int Speed = 4;
+    [SerializeField] int Speed;
+    [SerializeField] bool vertical;
+    [SerializeField] bool stationary;
     private bool up = true;
     private bool right = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,57 +17,38 @@ public class ObstacleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (vertical)
+        if (stationary == false)
         {
-            MoveVertically();
-        }
-        else
-        {
-            MoveHorizontally();
+            if (vertical)
+            {
+                MoveVertically();
+            }
+            else
+            {
+                MoveHorizontally();
+            }
         }
     }
 
     private void MoveVertically()
     {
         Vector2 vel = Vector2.zero;
-        if (up)
-        {
-            vel.y += Speed;
-            if (transform.position.y > 4)
-            {
-                up = false;
-            }
-        }
-        else if (up == false)
-        {
-            vel.y -= Speed;
-            if (transform.position.y < -4)
-            {
-                up = true;
-            }
-        }
+        vel.y += Speed;
         RB.linearVelocity = vel;
     }
 
     private void MoveHorizontally()
     {
         Vector2 vel = Vector2.zero;
-        if (right)
-        {
-            vel.x += Speed + 2;
-            if (transform.position.x > 10)
-            {
-                right = false;
-            }
-        }
-        else if (right == false)
-        {
-            vel.x -= Speed + 2;
-            if (transform.position.x < 7)
-            {
-                right = true;
-            }
-        }
+        vel.x += Speed;
         RB.linearVelocity = vel;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "SpikeTrigger")
+        {
+            Speed = Speed * -1;
+        }
     }
 }
