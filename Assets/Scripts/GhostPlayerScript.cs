@@ -23,7 +23,6 @@ public class GhostPlayerScript : MonoBehaviour
     }
     public void DeadPlayerMovement()
     {
-        //PlayerState s = PlayerState.Dead;
         Vector2 vel = Vector2.zero;
         if (Keyboard.current.wKey.isPressed)
         {
@@ -43,7 +42,6 @@ public class GhostPlayerScript : MonoBehaviour
             vel.x -= Speed / 2;
             SR.flipX = true;
         }
-        //SetState(s);
         RB.linearVelocity = vel;
     }
 
@@ -62,6 +60,14 @@ public class GhostPlayerScript : MonoBehaviour
                 PlayerScript.PRB.transform.position = CheckpointScript.checkpointPosition;
             }
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hazard")
+        {
+            SceneManager.LoadScene("Level 1");
         }
     }
 }
