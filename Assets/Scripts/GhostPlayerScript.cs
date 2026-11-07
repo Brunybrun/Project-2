@@ -10,16 +10,24 @@ public class GhostPlayerScript : MonoBehaviour
     public Rigidbody2D RB;
     public SpriteRenderer SR;
     private int Speed = 4;
+    public GameObject ghost;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        ghost.transform.position = GhostSpawn.spawnPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        DeadPlayerMovement();
+        if (PlayerScript.hit)
+        {
+            DeadPlayerMovement();
+        }
+        else if (PlayerScript.hit == false)
+        {
+            RB.linearVelocity = Vector2.zero;
+        }
     }
     public void DeadPlayerMovement()
     {
@@ -59,7 +67,7 @@ public class GhostPlayerScript : MonoBehaviour
             {
                 PlayerScript.PRB.transform.position = CheckpointScript.checkpointPosition;
             }
-            Destroy(gameObject);
+            ghost.transform.position = GhostSpawn.spawnPosition;
         }
     }
 

@@ -6,15 +6,7 @@ public class ObstacleScript : MonoBehaviour
     [SerializeField] int Speed;
     [SerializeField] bool vertical;
     [SerializeField] bool stationary;
-    private bool up = true;
-    private bool right = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (stationary == false)

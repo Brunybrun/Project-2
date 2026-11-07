@@ -24,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         hit = false;
+        PRB.transform.position = PlayerSpawn.spawnPointPosition;
     }
 
     void Update()
@@ -106,8 +107,9 @@ public class PlayerScript : MonoBehaviour
             if (spawnG)
             {
                 spawnG = false;
-                Vector3 ghostSpawn = GhostSpawn.spawnPosition;
-                Instantiate(ghost, ghostSpawn, Quaternion.identity);
+                ghost.transform.position = GhostSpawn.spawnPosition;
+                /*Vector3 ghostSpawn = GhostSpawn.spawnPosition;
+                Instantiate(ghost, ghostSpawn, Quaternion.identity);*/
             }
         }
         if (collision.gameObject.tag == "Flag")
