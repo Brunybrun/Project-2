@@ -115,6 +115,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.tag == "Flag")
         {
             SceneManager.LoadScene("Level 2");
+            //GameManager.startAtSpawn = true;
         }
         if (collision.gameObject.tag == "Checkpoint")
         {

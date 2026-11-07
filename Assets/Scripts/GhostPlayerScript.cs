@@ -76,6 +76,7 @@ public class GhostPlayerScript : MonoBehaviour
         if (collision.gameObject.tag == "Hazard")
         {
             SceneManager.LoadScene("Level 1");
+            //GameManager.startAtSpawn = true;
         }
     }
 }
