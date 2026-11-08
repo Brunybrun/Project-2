@@ -14,7 +14,8 @@ public class AiScript : MonoBehaviour
     void Start()
     {
         if (Target == null) Target = PlayerScript.Player;
-        //Enemy.transform.position = EnemySpawn.EnemySpawnPosition;
+        //Moves the position of the radius to the enemy so that I wouldn't have to move both the enemy and the radius around
+        TargetRadius.transform.position = Enemy.transform.position;
         //Changes the size of the radius, meaning the enemy can chase the player from a further distance
         TargetRadius.transform.localScale = new Vector3(Scale, Scale, Scale);
     }

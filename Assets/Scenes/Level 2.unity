@@ -574,6 +574,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5946809205893604697, guid: 4a55fa83c103123468b90af1cb12de68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946809205893604697, guid: 4a55fa83c103123468b90af1cb12de68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946809205893604697, guid: 4a55fa83c103123468b90af1cb12de68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946809205893604697, guid: 4a55fa83c103123468b90af1cb12de68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946809205893604697, guid: 4a55fa83c103123468b90af1cb12de68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946809205893604697, guid: 4a55fa83c103123468b90af1cb12de68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8254541241867580173, guid: 4a55fa83c103123468b90af1cb12de68, type: 3}
       propertyPath: m_Name
       value: Enemy
