@@ -100,7 +100,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hazard")
+        if (collision.gameObject.tag == "Hazard" || collision.gameObject.tag == "Enemy")
         {
             hit = true;
             Debug.Log("Hit Player");

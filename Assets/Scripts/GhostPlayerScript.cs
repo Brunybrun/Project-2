@@ -11,13 +11,13 @@ public class GhostPlayerScript : MonoBehaviour
     public SpriteRenderer SR;
     private int Speed = 4;
     public GameObject ghost;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
+        //Ensures that the ghost will spawn outside of the level
         ghost.transform.position = GhostSpawn.spawnPosition;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (PlayerScript.hit)
@@ -61,16 +61,20 @@ public class GhostPlayerScript : MonoBehaviour
             PlayerScript.hit = false;
             if (GameManager.startAtSpawn)
             {
+                //When the ghost collides with the player, the player returns to the intial spawnpoint
                 PlayerScript.PRB.transform.position = PlayerSpawn.spawnPointPosition;
             }
             else if (GameManager.startAtSpawn == false)
             {
+                //When the ghost collides with the player, the player retruns to the checkpoint
                 PlayerScript.PRB.transform.position = CheckpointScript.checkpointPosition;
             }
+            //Moves the outside of the level
             ghost.transform.position = GhostSpawn.spawnPosition;
         }
     }
 
+    //If the ghost gets hit during any level, the game resets back to level 1
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Hazard")
