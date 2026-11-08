@@ -130,9 +130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiScript
   Target: {fileID: 0}
-  RB: {fileID: 6194931819171019373}
+  ERB: {fileID: 6194931819171019373}
+  TRRB: {fileID: 0}
   Enemy: {fileID: 1607231751190251183}
-  Speed: 3
+  TargetRadius: {fileID: 0}
+  Scale: 0
 --- !u!50 &6194931819171019373
 Rigidbody2D:
   serializedVersion: 5

@@ -8,6 +8,7 @@ TagManager:
   - Flag
   - Checkpoint
   - SpikeTrigger
+  - Enemy
   layers:
   - Default
   - TransparentFX
