@@ -108,14 +108,11 @@ public class PlayerScript : MonoBehaviour
             {
                 spawnG = false;
                 ghost.transform.position = GhostSpawn.spawnPosition;
-                /*Vector3 ghostSpawn = GhostSpawn.spawnPosition;
-                Instantiate(ghost, ghostSpawn, Quaternion.identity);*/
             }
         }
         if (collision.gameObject.tag == "Flag")
         {
-            SceneManager.LoadScene("Level 2");
-            //GameManager.startAtSpawn = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         if (collision.gameObject.tag == "Checkpoint")
         {
