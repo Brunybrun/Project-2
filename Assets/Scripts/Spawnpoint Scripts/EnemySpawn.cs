@@ -11,12 +11,4 @@ public class EnemySpawn : MonoBehaviour
         SR.enabled = false;
         EnemySpawnPosition = spawnpoint.transform.position;
     }
-
-    private void Update()
-    {
-        /*if (PlayerScript.hit)
-        {
-            EnemySpawnPosition = spawnpoint.transform.position;
-        }*/
-    }
 }
