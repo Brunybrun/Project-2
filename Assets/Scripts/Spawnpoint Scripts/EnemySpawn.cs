@@ -4,11 +4,11 @@ public class EnemySpawn : MonoBehaviour
 {
     public GameObject spawnpoint;
     public SpriteRenderer SR;
-    public static Vector3 EnemySpawnPosition;
+    //public static Vector3 EnemySpawnPosition;
 
     void Awake()
     {
         SR.enabled = false;
-        EnemySpawnPosition = spawnpoint.transform.position;
+        //EnemySpawnPosition = spawnpoint.transform.position;
     }
 }

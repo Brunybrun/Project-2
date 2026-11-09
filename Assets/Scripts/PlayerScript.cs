@@ -100,7 +100,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hazard" || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Hazard")
         {
             hit = true;
             Debug.Log("Hit Player");
@@ -117,6 +117,20 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.tag == "Checkpoint")
         {
             GameManager.startAtSpawn = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            hit = true;
+            Debug.Log("Hit Player");
+            if (spawnG)
+            {
+                spawnG = false;
+                ghost.transform.position = GhostSpawn.spawnPosition;
+            }
         }
     }
 }

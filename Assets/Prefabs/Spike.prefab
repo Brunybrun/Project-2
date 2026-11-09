@@ -107,8 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ecf698de771da4b976df027e40351e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleScript
-  vertical: 0
   RB: {fileID: 5535936958127463453}
+  Speed: 0
+  vertical: 0
+  stationary: 0
 --- !u!50 &5535936958127463453
 Rigidbody2D:
   serializedVersion: 5

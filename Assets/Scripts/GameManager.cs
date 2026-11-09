@@ -10,14 +10,14 @@ public class GameManager : MonoBehaviour
     {
         god = this;
         startAtSpawn = true;
-        tutorial = true;
+        tutorial = false;
     }
 
     public void Start()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level 1"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial2") || SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial3"))
         {
-            tutorial = false;
+            tutorial = true;
         }
     }
 }

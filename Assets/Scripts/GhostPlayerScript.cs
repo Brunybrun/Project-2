@@ -9,8 +9,8 @@ public class GhostPlayerScript : MonoBehaviour
 {
     public Rigidbody2D RB;
     public SpriteRenderer SR;
-    private int Speed = 4;
     public GameObject ghost;
+    private float Speed = 6f;
 
     void Start()
     {
@@ -34,20 +34,20 @@ public class GhostPlayerScript : MonoBehaviour
         Vector2 vel = Vector2.zero;
         if (Keyboard.current.wKey.isPressed)
         {
-            vel.y += Speed / 2;
+            vel.y += Speed / 2f;
         }
         if (Keyboard.current.sKey.isPressed)
         {
-            vel.y -= Speed / 2;
+            vel.y -= Speed / 2f;
         }
         if (Keyboard.current.dKey.isPressed)
         {
-            vel.x += Speed / 2;
+            vel.x += Speed / 2f;
             SR.flipX = false;
         }
         if (Keyboard.current.aKey.isPressed)
         {
-            vel.x -= Speed / 2;
+            vel.x -= Speed / 2f;
             SR.flipX = true;
         }
         RB.linearVelocity = vel;
