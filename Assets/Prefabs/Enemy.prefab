@@ -439,6 +439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiScript
   Target: {fileID: 0}
+  State: 2
+  Anim: {fileID: 2086701101074446386}
   ERB: {fileID: 8397014293172642377}
   TRRB: {fileID: 2957540126430837231}
   Enemy: {fileID: 8986382120372044333}

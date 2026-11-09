@@ -1,9 +1,12 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static PlayerScript;
 
 public class AiScript : MonoBehaviour
 {
     public PlayerScript Target;
+    public EnemyState State = EnemyState.Looking;
+    public Animator Anim;
     public Rigidbody2D ERB; //Enemy Rigidbody
     public Rigidbody2D TRRB; //Target radius Rigidbody
     public GameObject Enemy;
@@ -38,8 +41,27 @@ public class AiScript : MonoBehaviour
         Sleeping = 3
     }
 
+    public void SetState(EnemyState s)
+    {
+        if (State == s) return;
+        State = s;
+        if (State == EnemyState.Angry)
+        {
+            Anim.Play("Angry");
+        }
+        else if (State == EnemyState.Looking)
+        {
+            Anim.Play("Looking");
+        }
+        else if (State == EnemyState.Sleeping)
+        {
+            Anim.Play("Sleeping");
+        }
+    }
+
     private void ChasePlayer()
     {
+        EnemyState es = EnemyState.Looking;
         //Does a check to see if the player is within the radius of the enemy
         if (TargetRadiusScript.move)
         {
@@ -49,7 +71,7 @@ public class AiScript : MonoBehaviour
                 if (Target == null) return;
                 Vector3 offset = Target.transform.position - transform.position;
                 ERB.linearVelocity = offset.normalized * Speed;
-                //TRRB.linearVelocity = offset.normalized * Speed;
+                es = EnemyState.Angry;
             }
             else if (PlayerScript.hit)
             {
@@ -57,26 +79,23 @@ public class AiScript : MonoBehaviour
                 TRRB.linearVelocity = Vector2.zero;
                 //Keeps both the enemy and the radius to stay put in its spawn location
                 Enemy.transform.position = spawnpoint.transform.position;
-                //TargetRadius.transform.position = spawnpoint.transform.position;
             }
         }
         else if (TargetRadiusScript.move == false)
         {
             ERB.linearVelocity = Vector2.zero;
-            //TRRB.linearVelocity = Vector2.zero;
+            if (PlayerScript.hit == false)
+            {
+                es = EnemyState.Looking;
+            }
+            else
+            {
+                es = EnemyState.Sleeping;
+            }
         }
+        SetState(es);
         TargetRadius.transform.position = Enemy.transform.position;
     }
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            //Moves the enemy back to its spawnpoint
-            Enemy.transform.position = spawnpoint.transform.position;
-        }
-    }
-    */
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")

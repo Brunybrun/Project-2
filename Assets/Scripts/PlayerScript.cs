@@ -6,7 +6,6 @@ using static UnityEditor.PlayerSettings;
 public class PlayerScript : MonoBehaviour
 {
     public static PlayerScript Player;
-
     public PlayerState State = PlayerState.Alive;
     public Animator Anim;
     public static Rigidbody2D PRB;
