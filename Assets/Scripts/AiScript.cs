@@ -30,6 +30,14 @@ public class AiScript : MonoBehaviour
         ChasePlayer();
     }
 
+    public enum EnemyState
+    {
+        None = 0,
+        Angry = 1,
+        Looking = 2,
+        Sleeping = 3
+    }
+
     private void ChasePlayer()
     {
         //Does a check to see if the player is within the radius of the enemy
